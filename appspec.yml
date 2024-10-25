@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: studentapp-artifact/target/studentapp.war
+    destination: apache-tomcat-9.0.96.tar.gz/webapps/
+
+hooks:
+  BeforeInstall:
+    - location: /install_tomcat.sh
+      timeout: 300
+      runas: root
+
+   ApplicationStart:
+    - location: /start_application.sh
+      timeout: 300
+      runas: root
