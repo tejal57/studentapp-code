@@ -14,3 +14,5 @@ hooks:
     - location: /start_application.sh
       timeout: 300
       runas: root
+
+      # appspec.yml file for deploy application on ec2
