@@ -10,12 +10,23 @@ phases:
       - echo "Installing Maven..."
       - sudo apt install maven -y
       - mvn --version  
+      - echo "Installing Docker..."
+      - sudo apt-get install -y docker.io
+      - sudo service docker start
 
   build:
     commands:
       - echo "Building the project using Maven..."
       - mvn clean 
       - mvn package
+      - echo "Building the Docker image..."
+      - docker build -t studentapp:latest .
+      - echo "Logging into Amazon ECR..."
+      - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 557690596766.dkr.ecr.us-west-1.amazonaws.com
+      - echo "Tagging the Docker image..."
+      - docker tag studentapp:latest 557690596766.dkr.ecr.us-west-1.amazonaws.com/studentapp:latest
+      - echo "Pushing the Docker image to ECR..."
+      - docker push 557690596766.dkr.ecr.us-west-1.amazonaws.com/studentapp:latest
 
 artifacts:
   files:
