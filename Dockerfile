@@ -13,7 +13,6 @@ RUN apt-get update && \
 WORKDIR /opt/apache-tomcat-9.0.96
 
 COPY target/*.war webapps/studentapp.war 
-COPY context.xml conf/context.xml
 ADD mysql-connector.jar lib/mysql-connector.jar
 
 EXPOSE 8080
