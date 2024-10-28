@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 
 
-LABEL APP="Studentapp"
+LABEL APP="Student"
 USER root
 WORKDIR /opt/
 
