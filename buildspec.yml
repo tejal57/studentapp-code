@@ -10,10 +10,7 @@ phases:
       - echo "Installing Maven..."
       - sudo apt install maven -y
       - mvn --version  
-      - echo "Installing Docker..."
-      - sudo apt-get install -y docker.io
-      - sudo service docker start
-
+     
   build:
     commands:
       - echo "Building the project using Maven..."
